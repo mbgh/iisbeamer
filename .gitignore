@@ -124,3 +124,8 @@ sympy-plots-for-*.tex/
 # WinEdt
 *.bak
 *.sav
+
+## Custom ignores
+install_global.sh
+install_local.sh
+example.pdf
