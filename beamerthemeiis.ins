@@ -1,0 +1,78 @@
+%%
+%% Copyright (C) 2015 by Michael Muehlberghuber, IIS, ETH Zurich
+%%
+%% This program is free software: you can redistribute it and/or modify
+%% it under the terms of the GNU General Public License as published by
+%% the Free Software Foundation, either version 3 of the License, or
+%% (at your option) any later version.
+%% 
+%% This program is distributed in the hope that it will be useful,
+%% but WITHOUT ANY WARRANTY; without even the implied warranty of
+%% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%% GNU General Public License for more details.
+%% 
+%% You should have received a copy of the GNU General Public License
+%% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%% 
+
+%% Make sure docstrip is loaded.
+\input{docstrip.tex}
+
+%% Line-by-line activity messages are usually not really useful.
+\keepsilent
+
+%% Make sure docstrip does not always ask when it overwrites an
+%% existing file during generation.
+\askforoverwritefalse
+
+%% Declare the base directory.
+\usedir{tex/latex/iisbeamer}
+
+%% The preamble to be written to every generated file by docstrip.
+\preamble
+
+Copyright (C) 2015 by Michael Muehlberghuber, IIS, ETH Zurich
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\endpreamble
+
+%% Declare the files to be generated.
+\generate{\file{iisbeamer.cls}{\from{iisbeamer.dtx}{package}}}
+
+\obeyspaces
+\Msg{***************************************************************************}
+\Msg{*                                                                         *}
+\Msg{* To finish the installation you have to move the following files into a  *}
+\Msg{* directory searched by TeX:                                              *}
+\Msg{*                                                                         *}
+\Msg{*    beamerthemeiis.sty                                                   *}
+\Msg{*    beamerouterthemeiis.sty                                              *}
+\Msg{*    beamerinnerthemeiis.sty                                              *}
+\Msg{*    beamercolorthemeiis.sty                                              *}
+\Msg{*    beamerfontthemeiis.sty                                               *}
+\Msg{*    eth_logo.pdf                                                         *}
+\Msg{*    eth_logo_neg.pdf                                                     *}
+\Msg{*    wafer.jpg                                                            *}
+\Msg{*    wafer.png                                                            *}
+\Msg{*                                                                         *}
+\Msg{* To produce the documentation run the file beamerthemeiis.dtx through    *}
+\Msg{* LaTeX.                                                                  *}
+\Msg{*                                                                         *}
+\Msg{* Happy TeXing!                                                           *}
+\Msg{*                                                                         *}
+\Msg{***************************************************************************}
+
+%% Tell docstrip that this is the end of the installation file.
+\endbatchfile
