@@ -1,0 +1,192 @@
+% \iffalse meta-comment
+%
+% Copyright (C) 2015 by Michael Muehlberghuber, IIS, ETH Zurich
+%
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%
+% \fi
+%
+% \iffalse
+%<*driver>
+\ProvidesFile{iisbeamer.dtx}[2015/09/10 v0.1 IIS beamer theme]
+%</driver>
+%
+%<*driver>
+\documentclass[a4paper,11pt]{ltxdoc}
+\usepackage{xspace}
+\usepackage[textsize=scriptsize,colorinlistoftodos]{todonotes}
+\usepackage{hyperref}
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+\begin{document}
+ \DocInput{beamerthemeiis.dtx}
+ \PrintChanges
+ \PrintIndex
+\end{document}
+%</driver>
+% \fi
+%
+% \CheckSum{9}
+%
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+% \changes{v0.1}{2015/09/10}{Initial version}
+%
+% \GetFileInfo{beamerthemeiis.dtx}
+%
+% \DoNotIndex{\#,\$,\%,\@,\\,\{,\},\^,\_,\~,\ ,\"}
+% \DoNotIndex{\let,\def,\else,\empty,\ensuremath,\iflanguage,\ifthenelse,\ifx,\isempty}
+% \DoNotIndex{\textbf,\textsc,\textwidth,\vspace,\xspace,\url,\whiledo}
+% \DoNotIndex{\value,\vfill,\newcommand,\fi,\global,\end}
+% \DoNotIndex{\AtBeginDocument,\baselineskip,\begin,\CurrentOption,\DeclareOption}
+% \DoNotIndex{\fontfamily,\fontseries,\fontsize,\hookleftarrow,\hrulefill,\Huge}
+% \DoNotIndex{\itshape,\LARGE,\linewidth,\mbox,\newcounter,\newenvironment,\relax}
+% \DoNotIndex{\@waferpngfalse,\@waferpngtrue,\if@waferpng,\mode,\newif,\ProcessOptions}
+% \DoNotIndex{\RequirePackage,\setlength,\TPHorizModule,\TPVertModule}
+% \DoNotIndex{\usecolortheme,\usefonttheme,\useinnertheme,\useoutertheme}
+%
+% \newcommand{\latexcls}[1]{\textsf{#1}}
+% \newcommand{\latexsty}[1]{\textsf{#1}}
+% \newcommand{\package}[1]{\textsf{#1}}
+% \newcommand{\theme}[1]{\textsf{#1}}
+% \newcommand{\file}[1]{\texttt{#1}}
+% \newcommand{\option}[1]{\textsf{#1}}
+% \newcommand{\name}[1]{#1}
+% \newcommand{\mail}[1]{\texttt{#1}}
+% \newcommand{\todoin}[1]{\todo[inline,size=\normalsize]{#1}\xspace}
+%
+% \title{The \theme{iis} \latexcls{beamer} theme\thanks{This
+%   document corresponds to \theme{iis}~\fileversion, dated~\filedate.}}
+% \author{\name{Michael Muehlberghuber} \\ \mail{mbgh@iis.ee.ethz.ch}}
+%
+% \maketitle
+%
+% \begin{abstract}
+%   The \theme{iis} theme for the \LaTeX{} \latexcls{beamer} class has
+%   been developed at the Integrated Systems Laboratory (IIS). The
+%   main purpose of the theme is to provide a minimalist layout with
+%   regard to the space occupied by \emph{surrounding elements} such
+%   as navigation bars, footer, or header and should basically work
+%   out of the box at any workstation of the IIS IT
+%   infrastructure. Thereby, most of the slide space can be filled
+%   with actual content of the respective presentation.
+% \end{abstract}
+%
+% \listoftodos
+% \tableofcontents
+%
+% \section{Introduction}
+% \todoin{Insert a small intro.}
+%
+% \section{Usage}
+% \todoin{Describe the usage of the theme.}
+%
+% \section{Options}
+% \todoin{Describe the available theme options.}
+%
+% \section{Commands}
+% \todoin{Describe the provided commads.}
+%
+% \section{Caveats}
+% \todoin{Mention potential caveats.}
+%
+% \section{Known Bugs}
+% \todoin{List the known bugs.}
+%
+% \section{Requested and Upcoming Features}
+% \todoin{List the requested and upcoming features.}
+%
+% \section{Implementation}
+% Describe the structure of the theme here...
+%
+% \subsection{\file{beamerthemeiis.sty}}
+%
+% \iffalse
+%<*beamerthemeiis>
+% \fi
+%
+% Ensure that the following changes are valid for all
+% \emph{presentation} modes of \latexcls{beamer} (i.e., not for the
+% \emph{article} mode).
+%    \begin{macrocode}
+\mode<presentation>
+%    \end{macrocode}
+%
+% In the following, all the required packages are loaded. But first,
+% let us summarize, why we actually need them:
+% \begin{description}
+%  \item[\latexsty{textpos}] For positioning the wafer image on the title page.
+%  \item[\latexsty{tikz}] \todoin{TBD}
+% \end{description}
+%    \begin{macrocode}
+\RequirePackage[absolute,overlay]{textpos}
+\RequirePackage{tikz}
+%    \end{macrocode}
+%
+% Setup the horizontal an vertical units for the \latexsty{textpos}
+% package.
+%    \begin{macrocode}
+\setlength{\TPHorizModule}{1cm}
+\setlength{\TPVertModule}{1cm}
+%    \end{macrocode}
+%
+% Declare a boolean, which determines whether we should use the PNG
+% version of the wafer (or the JPG version) on the title page.
+%    \begin{macrocode}
+\newif\if@waferpng
+\@waferpngfalse
+%    \end{macrocode}
+%
+% Declare the provided class options and process them.
+%    \begin{macrocode}
+\DeclareOption{waferpng}{\@waferpngtrue}
+\ProcessOptions
+%    \end{macrocode}
+%
+% Declare the settings (i.e., colors, fonts, as well as the inner and
+% outer styles) for the \theme{iis} theme.
+%    \begin{macrocode}
+\usecolortheme{iis}
+\usefonttheme{iis}
+\useinnertheme{iis}
+\useoutertheme{iis}
+%    \end{macrocode}
+%
+% Ensure that all subsequent commands will again be valid for all
+% modes of the \latexcls{beamer} class.
+%    \begin{macrocode}
+\mode<all>
+%    \end{macrocode}
+% \iffalse
+%</beamerthemeiis>
+% \fi
+%
+% \Finale
+%
+\endinput
