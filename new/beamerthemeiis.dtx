@@ -126,7 +126,7 @@
 % \section{Implementation}
 % Describe the structure of the theme here...
 %
-% \subsection{\file{beamerthemeiis.sty}}
+% \subsection{Main Theme File (\file{beamerthemeiis.sty})}
 %
 % \iffalse
 %<*beamerthemeiis>
@@ -189,7 +189,112 @@
 % \fi
 %
 %
-% \subsection{\file{beamercolorthemeiis.sty}}
+% \subsection{Outer Theme Settings (\file{beamerouterthemeiis.sty})}
+%
+% \iffalse
+%<*beamerouterthemeiis>
+% \fi
+%
+% Ensure that the following changes are valid for all
+% \emph{presentation} modes of \latexcls{beamer} (i.e., not for the
+% \emph{article} mode).
+%    \begin{macrocode}
+\mode<presentation>
+%    \end{macrocode}
+%
+% Declare the frame title.
+%    \begin{macrocode}
+\defbeamertemplate*{frametitle}{iis}[1][left]
+{%
+\ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+  \@tempdima=\textwidth%
+  \advance\@tempdima by\beamer@leftmargin%
+  \advance\@tempdima by\beamer@rightmargin%
+  \begin{beamercolorbox}[%
+    sep=0.0cm,leftskip=1.3em,wd=\the\@tempdima]{frametitle}
+    \usebeamerfont{frametitle}%
+    \vbox{}\vskip0.5ex%
+    \if@tempswa\else\csname beamer@fteleft\endcsname\fi%
+    {\strut\insertframetitle\strut\par%
+    {%
+      \ifx\insertframesubtitle\@empty%
+      \else%
+      {\usebeamerfont{framesubtitle}%
+        \usebeamercolor[fg]{framesubtitle}%
+        \insertframesubtitle\strut\par}%
+      \fi
+    }%
+    \vskip-1.5ex%
+    \rule{\dimexpr\paperwidth-0.6cm-1.5em\relax}{0.4pt}}
+    \if@tempswa\else\vskip-.3cm\fi%
+  \end{beamercolorbox}%
+}
+%    \end{macrocode}
+%
+% Create the frame header line.
+%    \begin{macrocode}
+\defbeamertemplate*{headline}{iis}
+{%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[%
+    wd=\paperwidth,ht=2.5ex,dp=1ex]{section in head/foot}%
+    \usebeamerfont{section in head/foot}%
+    \insertsectionnavigationhorizontal{\paperwidth}{}{}
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+%    \end{macrocode}
+%
+% Create the frame footer line.
+%    \begin{macrocode}
+\defbeamertemplate*{footline}{iis}
+{%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[%
+    wd=\paperwidth,ht=2.5ex,dp=1ex]{palette tertiary}%
+    \begin{beamercolorbox}[%
+      wd=0.15\paperwidth,leftskip=0.32cm]{image in head/foot}%
+      \includegraphics[height=1.55ex]{eth_logo_neg}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[%
+      wd=0.7\paperwidth,center]{institute in head/foot}%
+      \usebeamerfont{institute in head/foot}%
+      \usebeamercolor[fg]{institute in head/foot}%
+      \insertshortauthor\expandafter\beamer@ifempty%
+      \expandafter{\beamer@shortinstitute}{}{~(\insertshortinstitute)}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[%
+      wd=0.15\paperwidth,right,rightskip=0.3cm]{%
+        frame numbers in head/foot}%
+      \usebeamerfont{frame numbers in head/foot}%
+      \usebeamercolor[fg]{frame numbers in head/foot}%
+      \insertframenumber{} / \inserttotalframenumber
+    \end{beamercolorbox}%
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+%    \end{macrocode}
+%
+% Ensure that we have a little bit less margin on the left and right
+% of the actual content of the slides.
+%    \begin{macrocode}
+\setbeamersize{text margin left=2em,text margin right=2em}
+%
+%    \end{macrocode}
+% Ensure that all subsequent commands will again be valid for all
+% modes of the \latexcls{beamer} class.
+%    \begin{macrocode}
+\mode<all>
+%    \end{macrocode}
+%
+% \iffalse
+%</beamerouterthemeiis>
+% \fi
+%
+%
+% \subsection{Color Settings (\file{beamercolorthemeiis.sty})}
 %
 % \iffalse
 %<*beamercolorthemeiis>
