@@ -38,7 +38,7 @@
 %</driver>
 % \fi
 %
-% \CheckSum{9}
+% \CheckSum{0}
 %
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -81,6 +81,7 @@
 % \newcommand{\name}[1]{#1}
 % \newcommand{\mail}[1]{\texttt{#1}}
 % \newcommand{\todoin}[1]{\todo[inline,size=\normalsize]{#1}\xspace}
+% \newcommand{\texlive}{\TeX{}Live\xspace}
 %
 % \title{The \theme{iis} \latexcls{beamer} theme\thanks{This
 %   document corresponds to \theme{iis}~\fileversion, dated~\filedate.}}
@@ -115,7 +116,16 @@
 % \todoin{Describe the provided commads.}
 %
 % \section{Caveats}
-% \todoin{Mention potential caveats.}
+%
+% \begin{itemize}
+% \item The \theme{iis} \latexcls{beamer} theme has been designed to
+%   work out of the box on the workstations of the Integrated Systems
+%   Laboratory (IIS) using at least \texlive version
+%   2011. Nevertheless, only minor adaptions should be necessary
+%   (e.g., installing additional packages) to use it on any other
+%   mature \TeX{} distribution.
+% \end{itemize}
+%
 %
 % \section{Known Bugs}
 % \todoin{List the known bugs.}
@@ -123,8 +133,16 @@
 % \section{Requested and Upcoming Features}
 % \todoin{List the requested and upcoming features.}
 %
+% ^^A Indicate the start of the implementation part. This is important
+% ^^A since the \CheckSum{} macro only counts the backslashes of the
+% ^^A code (i.e., the lines not starting with a %) betwen the
+% ^^A \StopEventually{} and the \Finale macro.
+% \StopEventually{}
+%
 % \section{Implementation}
 % Describe the structure of the theme here...
+%
+%
 %
 % \subsection{Main Theme File (\file{beamerthemeiis.sty})}
 %
@@ -479,6 +497,35 @@
 %
 % \iffalse
 %</beamercolorthemeiis>
+% \fi
+%
+%
+% \subsection{Font Settings (\file{beamercolorthemeiis.sty})}
+%
+% \iffalse
+%<*beamerfontthemeiis>
+% \fi
+%
+% Ensure that the following changes are valid for all
+% \emph{presentation} modes of \latexcls{beamer} (i.e., not for the
+% \emph{article} mode).
+%    \begin{macrocode}
+\mode<presentation>
+%    \end{macrocode}
+%
+% Set the font for the frame titles.
+%    \begin{macrocode}
+\setbeamerfont{frametitle}{series=\bfseries}
+%    \end{macrocode}
+%
+% Ensure that all subsequent commands will again be valid for all
+% modes of the \latexcls{beamer} class.
+%    \begin{macrocode}
+\mode<all>
+%    \end{macrocode}
+%
+% \iffalse
+%</beamerfontthemeiis>
 % \fi
 %
 % \Finale
