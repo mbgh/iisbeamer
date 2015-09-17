@@ -294,6 +294,105 @@
 % \fi
 %
 %
+% \subsection{Inner Theme Settings (\file{beamerinnerthemeiis.sty})}
+%
+% \iffalse
+%<*beamerinnerthemeiis>
+% \fi
+%
+% Ensure that the following changes are valid for all
+% \emph{presentation} modes of \latexcls{beamer} (i.e., not for the
+% \emph{article} mode).
+%    \begin{macrocode}
+\mode<presentation>
+%    \end{macrocode}
+%
+% Per default, use the \emph{rectangles} inner theme in order to use,
+% for instance, squares in the table of contents and in item
+% environments.
+%    \begin{macrocode}
+\useinnertheme{rectangles}
+%    \end{macrocode}
+%
+% Create some commands for positioning the wafer on the title page.
+%    \begin{macrocode}
+\def\@waferwidth{0.5}%
+\newcommand{\setwaferwidth}[1]{\def\@waferwidth{#1}}%
+\let\waferwidth\setwaferwidth%
+%
+\def\@waferleft{0.0}%
+\newcommand{\setwaferleft}[1]{\def\@waferleft{#1}}%
+\let\waferleft\setwaferleft%
+%
+\def\@wafertop{0.0}%
+\newcommand{\setwafertop}[1]{\def\@wafertop{#1}}%
+\let\wafertop\setwafertop%
+%    \end{macrocode}
+%
+% Declare the title page.
+%    \begin{macrocode}
+\defbeamertemplate*{title page}{iis}[1][]
+{ 
+  \setbeamertemplate{headline}{}
+  % Align all of the content on the title page to the right.
+  \begin{flushright}
+    % Insert the title.
+    {\usebeamerfont{title}\usebeamercolor[fg]{title}%
+      \textbf{\inserttitle}\vskip-0.2cm}%
+    % Insert a horizontal rule.
+    {\textcolor{structure.fg}{\rule{\linewidth}{2pt}}}%
+    % Insert the subtitle (if specified by the user).
+    \ifx\insertsubtitle\@empty\else%
+    {\\\usebeamerfont{subtitle}\usebeamercolor[fg]%
+      {title}\textbf{\insertsubtitle}}%
+    \fi%
+    {\\\usebeamerfont{date}{\footnotesize\insertdate}}%
+    \vfill%
+    {\usebeamerfont{author}{\small\insertauthor}}%
+    \vfill%
+    \includegraphics[width=2cm]{eth_logo}\\%
+    \usebeamerfont{institute}{\insertinstitute}%
+  \end{flushright}
+  % Place the wafer image (either the PNG version or the JPG version,
+  % depending on the theme options specified).
+  \begin{textblock}{12.8}(\@waferleft,\@wafertop)%
+    \if@waferpng%
+    \includegraphics[width=\@waferwidth\linewidth]{wafer.png}%
+    \else%
+    \includegraphics[width=\@waferwidth\linewidth]{wafer.jpg}%
+    \fi%
+  \end{textblock}%
+}
+%    \end{macrocode}
+%
+% Make sure the item environmens are left-aligned with the actual text
+% of a slide.
+%    \begin{macrocode}
+\setlength{\leftmargini}{1em}
+\setlength{\leftmarginii}{1.2em}
+%    \end{macrocode}
+%
+% Make sure that all block environments have rounded edges.
+%    \begin{macrocode}
+\setbeamertemplate{blocks}[rounded]
+%    \end{macrocode}
+% TBD:
+%    \begin{macrocode}
+\defbeamertemplate{description item}{align left}%
+{\insertdescriptionitem\hfill}
+%    \end{macrocode}
+%
+% Ensure that all subsequent commands will again be valid for all
+% modes of the \latexcls{beamer} class.
+%    \begin{macrocode}
+\mode<all>
+%    \end{macrocode}
+%
+% \iffalse
+%</beamerinnerthemeiis>
+% \fi
+%
+%
 % \subsection{Color Settings (\file{beamercolorthemeiis.sty})}
 %
 % \iffalse
