@@ -19,23 +19,21 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{iisbeamer.dtx}
+\ProvidesFile{beamerthemeiis.dtx}[2015/10/06 v0.2 IIS beamer theme]
 %</driver>
-%<class>\NeedsTeXFormat{LaTeX2e}
-%<class>\ProvidesFile{beamerthemeiis.sty}[]
-%<*class>
-    [2015/09/10 v0.1 A beamer theme of the Integrated Systems Laboratory (IIS)]
-%</class>
 %
 %<*driver>
 \documentclass[a4paper,11pt]{ltxdoc}
-\usepackage{tabularx}
+\usepackage{xspace}
+\usepackage[textsize=scriptsize,colorinlistoftodos]{todonotes}
 \usepackage{hyperref}
 \EnableCrossrefs
 \CodelineIndex
 \RecordChanges
 \begin{document}
- \DocInput{iisbeamer.dtx}
+ \DocInput{beamerthemeiis.dtx}
+ \PrintChanges
+ \PrintIndex
 \end{document}
 %</driver>
 % \fi
@@ -58,9 +56,9 @@
 %   Grave accent  \`     Left brace    \{     Vertical bar  \|
 %   Right brace   \}     Tilde         \~}
 %
-% \changes{v0.1}{2015/04/06}{Initial version}
+% \changes{v0.1}{2015/09/10}{Initial version}
 %
-% \GetFileInfo{iisbeamer.dtx}
+% \GetFileInfo{beamerthemeiis.dtx}
 %
 % \DoNotIndex{\#,\$,\%,\@,\\,\{,\},\^,\_,\~,\ ,\"}
 % \DoNotIndex{\let,\def,\else,\empty,\ensuremath,\iflanguage,\ifthenelse,\ifx,\isempty}
@@ -69,194 +67,546 @@
 % \DoNotIndex{\AtBeginDocument,\baselineskip,\begin,\CurrentOption,\DeclareOption}
 % \DoNotIndex{\fontfamily,\fontseries,\fontsize,\hookleftarrow,\hrulefill,\Huge}
 % \DoNotIndex{\itshape,\LARGE,\linewidth,\mbox,\newcounter,\newenvironment,\relax}
+% \DoNotIndex{\if@waferpng,\mode,\newif,\ProcessOptions}
+% \DoNotIndex{\RequirePackage,\setlength,\TPHorizModule,\TPVertModule}
+% \DoNotIndex{\usecolortheme,\usefonttheme,\useinnertheme,\useoutertheme}
+% \DoNotIndex{\definecolor,\setbeamercolor}
+% \DoNotIndex{\@empty,\@tempdima,\advance,\beamer@ifempty,\beamer@leftmargin}
+% \DoNotIndex{\beamer@rightmargin,\beamer@shortinstitute,\bfseries,\csname}
+% \DoNotIndex{\defbeamertemplate,\dimexpr,\endcsname,\expandafter,\footnotesize}
+% \DoNotIndex{\hbox,\hfill,\if@hidefooter,\if@showheader,\if@tempswa,\ifbeamercolorempty}
+% \DoNotIndex{\includegraphics,\insertauthor,\insertdate,\insertdescriptionitem,\insertframenumber}
+% \DoNotIndex{\insertframesubtitle,\insertframetitle,\insertinstitute,\insertsectionnavigationhorizontal}
+% \DoNotIndex{\insertshortauthor,\insertshortinstitute,\insertsubtitle,\inserttitle}
+% \DoNotIndex{\inserttotalframenumber,\leavevmode,\leftmargini,\leftmarginii,\nointerlineskip}
+% \DoNotIndex{\paperwidth,\par,\rule,\setbeamerfont,\setbeamersize,\setbeamertemplate}
+% \DoNotIndex{\setwaferleft,\setwafertop,\setwaferwidth,\small,\strut,\textcolor,\the}
+% \DoNotIndex{\usebeamercolor,\usebeamerfont,\vbox,\vskip,\waferleft,\wafertop,\waferwidth}
 %
-% \newcommand\latexcls[1]{\textsf{#1}}
-% \newcommand\latexsty[1]{\textsf{#1}}
-% \newcommand\package[1]{\textsf{#1}}
-% \newcommand\option[1]{\textsf{#1}}
-% \newcommand\name[1]{\textsc{#1}}
-% \newcommand\mail[1]{\texttt{#1}}
+% \newcommand{\latexcls}[1]{\textsf{#1}}
+% \newcommand{\latexsty}[1]{\textsf{#1}}
+% \newcommand{\package}[1]{\textsf{#1}}
+% \newcommand{\theme}[1]{\textsf{#1}}
+% \newcommand{\file}[1]{\texttt{#1}}
+% \newcommand{\option}[1]{\textsf{#1}}
+% \newcommand{\name}[1]{#1}
+% \newcommand{\mail}[1]{\texttt{#1}}
+% \newcommand{\todoin}[1]{\todo[inline,size=\normalsize]{#1}\xspace}
+% \newcommand{\texlive}{\TeX{}Live\xspace}
 %
-% \title{\latexcls{iisbeamer}\thanks{This document corresponds to
-%   \latexcls{iisbeamer}~\fileversion, dated~\filedate.}}
+% \title{The \theme{iis} \latexcls{beamer} theme\thanks{This
+%   document corresponds to \theme{iis}~\fileversion, dated~\filedate.}}
 % \author{\name{Michael Muehlberghuber} \\ \mail{mbgh@iis.ee.ethz.ch}}
 %
 % \maketitle
 %
 % \begin{abstract}
-%  The \latexcls{iisbeamer} document class ...
+%   The \theme{iis} theme for the \LaTeX{} \latexcls{beamer} class has
+%   been developed at the Integrated Systems Laboratory (IIS). The
+%   main purpose of the theme is to provide a minimalist layout with
+%   regard to the space occupied by \emph{surrounding elements} such
+%   as navigation bars, footer, or header and should basically work
+%   out of the box at any workstation of the IIS IT
+%   infrastructure. Thereby, most of the slide space can be filled
+%   with actual content of the respective presentation.
 % \end{abstract}
 %
-% \PrintChanges
+% \listoftodos
 % \tableofcontents
 %
 % \section{Introduction}
-% Here comes the intro...
+% \todoin{Insert a small intro.}
+%
+% \section{Usage}
+% \todoin{Describe the usage of the theme.}
+%
+% \section{Options}
+% When loading the \theme{iis} theme, various options can be provided,
+% which allow to adapt its behavior. In the following, the available
+% options will be described.
+%
+%
+% \subsection{List of Available Theme Options}
+%
+% \DescribeMacro{waferpng}
+% Per default, the file type of the wafer image shown on the titlepage
+% is a JPEG. Unfortunately, this file type does not allow any
+% transparency in the shown picture. Therefore, there is a white
+% border around the wafer image, which may cover parts of your text on
+% the title slide (e.g., the authors or the affiliation). Thus, if
+% needed, you can switch to the PNG version of the wafer image by
+% providing the |waferpng| option. Note that by doing so the file size
+% of the resulting PDF will increase, since the embedded PNG is larger
+% than its JPG counterpart.
+%
+% \DescribeMacro{showheader}
+% Usually, the available space for the content of the presentation
+% should have utmost priority with regard to the layout of the
+% slides. Therefore, we do not show any kind of navigation on the
+% slides per default. If needed, a header can be shown by providing
+% the |showheader| option of the theme, printing the section
+% navigation on top of every slide.
+%
+% \DescribeMacro{hidefooter}
+% If additional space is required on the slides, the footer can be
+% hidden by providing the |hidefooter| option. Using this option while
+% not providing the |showheader| option provides mainly a plain white
+% slide layout and hence, the largest possible content space.
+%
+% \section{Commands}
+% \todoin{Describe the provided commands.}
+%
+% \section{Caveats}
+%
+% \begin{itemize}
+% \item The \theme{iis} \latexcls{beamer} theme has been designed to
+%   work out of the box on the workstations of the Integrated Systems
+%   Laboratory (IIS) using at least \texlive version
+%   2011. Nevertheless, only minor adaptions should be necessary
+%   (e.g., installing additional packages) to use it on any other
+%   mature \TeX{} distribution.
+% \end{itemize}
+%
+%
+% \section{Known Bugs}
+% \todoin{List the known bugs.}
+%
+% \section{Requested and Upcoming Features}
+% \todoin{List the requested and upcoming features.}
+%
+% ^^A Indicate the start of the implementation part. This is important
+% ^^A since the \CheckSum{} macro only counts the backslashes of the
+% ^^A code (i.e., the lines not starting with a %) between the
+% ^^A \StopEventually{} and the \Finale macro.
+% \StopEventually{}
 %
 % \section{Implementation}
+% Describe the structure of the theme here...
 %
-% Pass all not declared class options to the underlying document class (i.e.,
-% the \latexcls{beamer} class).
+%
+%
+% \subsection{Main Theme File (\file{beamerthemeiis.sty})}
+%
+% \iffalse
+%<*beamerthemeiis>
+% \fi
+%
+% Ensure that the following changes are valid for all
+% \emph{presentation} modes of \latexcls{beamer} (i.e., not for the
+% \emph{article} mode).
 %    \begin{macrocode}
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{beamer}}
+\mode<presentation>
 %    \end{macrocode}
 %
-% Process the provided class options.
+% In the following, all the required packages are loaded. But first,
+% let us summarize, why we actually need them:
+% \begin{description}
+%  \item[\latexsty{textpos}] For positioning the wafer image on the title page.
+% \end{description}
 %    \begin{macrocode}
-\ProcessOptions\relax
+\RequirePackage[absolute,overlay]{textpos}
 %    \end{macrocode}
 %
-% Load the underlying document class (beamer).
+% Setup the horizontal an vertical units for the \latexsty{textpos}
+% package.
 %    \begin{macrocode}
-\LoadClass{beamer}
+\setlength{\TPHorizModule}{1cm}
+\setlength{\TPVertModule}{1cm}
 %    \end{macrocode}
 %
-% Load the required packages.
+% \begin{macro}{\ifiisb@waferpng}
+% \begin{macro}{\iisb@waferpngfalse}
+% Declare a boolean, which determines whether we should use the PNG
+% version of the wafer (or the JPG version) on the title page.
 %    \begin{macrocode}
-\RequirePackage{pgf}
+\newif\ifiisb@waferpng
+\iisb@waferpngfalse
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\ifiisb@showheader}
+% \begin{macro}{\iisb@showheaderfalse}
+% Declare a boolean, which determines whether the header (containing
+% the section navigation) should be shown or hidden.
+%    \begin{macrocode}
+\newif\ifiisb@showheader
+\iisb@showheaderfalse
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\ifiisb@hidefooter}
+% \begin{macro}{\iisb@hidefooterfalse}
+% Declare a boolean, which determines whether the footer (containing
+% the affiliation and the name) should be shown or hidden.
+%    \begin{macrocode}
+\newif\ifiisb@hidefooter
+\iisb@hidefooterfalse
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\iisb@waferpngtrue}
+% \begin{macro}{\iisb@showheadertrue}
+% \begin{macro}{\iisb@hidefootertrue}
+% Declare the provided class options and process them.
+%    \begin{macrocode}
+\DeclareOption{waferpng}{\iisb@waferpngtrue}
+\DeclareOption{showheader}{\iisb@showheadertrue}
+\DeclareOption{hidefooter}{\iisb@hidefootertrue}
+\ProcessOptions
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% Declare the settings (i.e., colors, fonts, as well as the inner and
+% outer styles) for the \theme{iis} theme.
+%    \begin{macrocode}
+\usecolortheme{iis}
+\usefonttheme{iis}
+\useinnertheme{iis}
+\useoutertheme{iis}
 %    \end{macrocode}
 %
-% Determine the distances from left and right
+% Ensure that all subsequent commands will again be valid for all
+% modes of the \latexcls{beamer} class.
 %    \begin{macrocode}
-\newcommand{\IISmargin}{0.5cm}
+\mode<all>
+%    \end{macrocode}
+% \iffalse
+%</beamerthemeiis>
+% \fi
+%
+%
+% \subsection{Outer Theme Settings (\file{beamerouterthemeiis.sty})}
+%
+% \iffalse
+%<*beamerouterthemeiis>
+% \fi
+%
+% Ensure that the following changes are valid for all
+% \emph{presentation} modes of \latexcls{beamer} (i.e., not for the
+% \emph{article} mode).
+%    \begin{macrocode}
+\mode<presentation>
 %    \end{macrocode}
 %
-% Beamer settings taken from the Boadilla theme.
+% Declare the frame title.
 %    \begin{macrocode}
-\useinnertheme{rounded}
-\usecolortheme{dolphin}
+\defbeamertemplate*{frametitle}{iis}[1][left]
+{%
+\ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+  \@tempdima=\textwidth%
+  \advance\@tempdima by\beamer@leftmargin%
+  \advance\@tempdima by\beamer@rightmargin%
+  \begin{beamercolorbox}[%
+    sep=0.0cm,leftskip=1.3em,wd=\the\@tempdima]{frametitle}
+    \usebeamerfont{frametitle}%
+    \vbox{}\vskip0.5ex%
+    \if@tempswa\else\csname beamer@fteleft\endcsname\fi%
+    {\strut\insertframetitle\strut\par%
+    {%
+      \ifx\insertframesubtitle\@empty%
+      \else%
+      {\usebeamerfont{framesubtitle}%
+        \usebeamercolor[fg]{framesubtitle}%
+        \insertframesubtitle\strut\par}%
+      \fi
+    }%
+    \vskip-1.5ex%
+    \rule{\dimexpr\paperwidth-0.6cm-1.5em\relax}{0.4pt}}
+    \if@tempswa\else\vskip-.3cm\fi%
+  \end{beamercolorbox}%
+}
 %    \end{macrocode}
 %
+% Create the frame header line.
+% \changes{v0.2}{2015/10/06}{Show header option added}
 %    \begin{macrocode}
-\setbeamertemplate{itemize item}[square]
-\setbeamertemplate{itemize subitem}[square]
-\setbeamertemplate{enumerate item}[circle]
-\setbeamertemplate{enumerate subitem}[square]
-\setbeamersize{text margin left=\IISmargin}
-\setbeamersize{text margin right=\IISmargin}
+\defbeamertemplate*{headline}{iis}
+{%
+  \ifiisb@showheader%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[%
+      wd=\paperwidth,ht=2.5ex,dp=1ex]{section in head/foot}%
+      \usebeamerfont{section in head/foot}%
+      \insertsectionnavigationhorizontal{\paperwidth}{}{}
+    \end{beamercolorbox}}%
+  \vskip0pt%
+  \else%
+  \fi%
+}
 %    \end{macrocode}
 %
+% Create the frame footer line.
+% \changes{v0.2}{2015/10/06}{Hide footer option added}
 %    \begin{macrocode}
-\setbeamerfont{frametitle}{series=\bfseries}
-\setbeamertemplate{navigation symbols}{}
+\defbeamertemplate*{footline}{iis}
+{%
+  \ifiisb@hidefooter%
+  \else%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[%
+    wd=\paperwidth,ht=2.5ex,dp=1ex]{palette tertiary}%
+    \begin{beamercolorbox}[%
+      wd=0.15\paperwidth,leftskip=0.32cm]{image in head/foot}%
+      \includegraphics[height=1.55ex]{eth_logo_neg}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[%
+      wd=0.7\paperwidth,center]{institute in head/foot}%
+      \usebeamerfont{institute in head/foot}%
+      \usebeamercolor[fg]{institute in head/foot}%
+      \insertshortauthor\expandafter\beamer@ifempty%
+      \expandafter{\beamer@shortinstitute}{}{~(\insertshortinstitute)}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[%
+      wd=0.15\paperwidth,right,rightskip=0.3cm]{%
+        frame numbers in head/foot}%
+      \usebeamerfont{frame numbers in head/foot}%
+      \usebeamercolor[fg]{frame numbers in head/foot}%
+      \insertframenumber{} / \inserttotalframenumber
+    \end{beamercolorbox}%
+  \end{beamercolorbox}}%
+  \vskip0pt%
+  \fi%
+}
 %    \end{macrocode}
 %
-% Set math in roman letters.
+% Ensure that we have a little bit less margin on the left and right
+% of the actual content of the slides.
 %    \begin{macrocode}
-\renewcommand\mathfamilydefault{\rmdefault}
+\setbeamersize{text margin left=2em,text margin right=2em}
 %    \end{macrocode}
 %
-% Define the ETH colors.
+% Ensure that all subsequent commands will again be valid for all
+% modes of the \latexcls{beamer} class.
 %    \begin{macrocode}
-\definecolor{eth1}{rgb}{0.122,0.251,0.478}   %% 1F407A
-\definecolor{eth2}{rgb}{0.235,0.353,0.059}   %% 3C5A0F
-\definecolor{eth3}{rgb}{0.000,0.412,0.706}   %% 0069B4     
-\definecolor{eth4}{rgb}{0.443,0.475,0.110}   %% 71791C
-\definecolor{eth5}{rgb}{0.569,0.020,0.416}   %% 91056A
-\definecolor{eth6}{rgb}{0.435,0.435,0.431}   %% 6F6F6E
-\definecolor{eth7}{rgb}{0.659,0.196,0.176}   %% A8322D
-\definecolor{eth8}{rgb}{0.000,0.478,0.573}   %% 007A92
-\definecolor{eth9}{rgb}{0.584,0.376,0.075}   %% 956013
-\definecolor{eth10}{rgb}{0.510,0.745,0.118}  %% 82BE1E
+\mode<all>
 %    \end{macrocode}
 %
-% Margins need to change.
+% \iffalse
+%</beamerouterthemeiis>
+% \fi
+%
+%
+% \subsection{Inner Theme Settings (\file{beamerinnerthemeiis.sty})}
+%
+% \iffalse
+%<*beamerinnerthemeiis>
+% \fi
+%
+% Ensure that the following changes are valid for all
+% \emph{presentation} modes of \latexcls{beamer} (i.e., not for the
+% \emph{article} mode).
+%    \begin{macrocode}
+\mode<presentation>
+%    \end{macrocode}
+%
+% Per default, use the \emph{rectangles} inner theme in order to use,
+% for instance, squares in the table of contents and in item
+% environments.
+%    \begin{macrocode}
+\useinnertheme{rectangles}
+%    \end{macrocode}
+%
+% Create some commands for positioning the wafer on the title page.
+%    \begin{macrocode}
+\def\iisb@waferwidth{0.5}%
+\newcommand{\setwaferwidth}[1]{\def\iisb@waferwidth{#1}}%
+%
+\def\iisb@waferleft{0.0}%
+\newcommand{\setwaferleft}[1]{\def\iisb@waferleft{#1}}%
+%
+\def\iisb@wafertop{5.8}%
+\newcommand{\setwafertop}[1]{\def\iisb@wafertop{#1}}%
+%    \end{macrocode}
+%
+% Declare the title page.
+%    \begin{macrocode}
+\defbeamertemplate*{title page}{iis}[1][]
+{ 
+  \setbeamertemplate{headline}{}
+  % Align all of the content on the title page to the right.
+  \begin{flushright}
+    % Insert the title.
+    {\usebeamerfont{title}\usebeamercolor[fg]{title}%
+      \textbf{\inserttitle}\vskip-0.2cm}%
+    % Insert a horizontal rule.
+    {\textcolor{structure.fg}{\rule{\linewidth}{2pt}}}%
+    % Insert the subtitle (if specified by the user).
+    \ifx\insertsubtitle\@empty\else%
+    {\\\usebeamerfont{subtitle}\usebeamercolor[fg]%
+      {title}\textbf{\insertsubtitle}}%
+    \fi%
+    {\\\usebeamerfont{date}{\footnotesize\insertdate}}%
+    \vfill%
+    {\usebeamerfont{author}{\small\insertauthor}}%
+    \vfill%
+    \includegraphics[width=2cm]{eth_logo}\\%
+    \usebeamerfont{institute}{\insertinstitute}%
+  \end{flushright}
+  % Place the wafer image (either the PNG version or the JPG version,
+  % depending on the theme options specified).
+  \begin{textblock}{12.8}(\iisb@waferleft,\iisb@wafertop)%
+    \ifiisb@waferpng%
+    \includegraphics[width=\iisb@waferwidth\linewidth]{wafer.png}%
+    \else%
+    \includegraphics[width=\iisb@waferwidth\linewidth]{wafer.jpg}%
+    \fi%
+  \end{textblock}%
+}
+%    \end{macrocode}
+%
+% Make sure the item environments are left-aligned with the actual text
+% of a slide.
 %    \begin{macrocode}
 \setlength{\leftmargini}{1em}
+\setlength{\leftmarginii}{1.2em}
 %    \end{macrocode}
 %
-% Main colortheme.
+% Make sure that all block environments have rounded edges.
 %    \begin{macrocode}
-\usecolortheme[named=eth1]{structure}
+\setbeamertemplate{blocks}[rounded]
 %    \end{macrocode}
 %
-% We need this for the header and the footer, you can set it separately.
+% Ensure that the description labels get left aligned and not right
+% aligned (the default behavior).
 %    \begin{macrocode}
-\setbeamercolor{headfootcolor}{fg=white,bg=eth1}
+\defbeamertemplate{description item}{align left}%
+{\insertdescriptionitem\hfill}
 %    \end{macrocode}
 %
-% Redefine tghe standard box.
+% Ensure that all subsequent commands will again be valid for all
+% modes of the \latexcls{beamer} class.
 %    \begin{macrocode}
-\setbeamercolor{block title}{fg=white,bg=eth1}
-\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!20!bg}
-%
-% Redefine the alert box.
-%    \begin{macrocode}
-\setbeamercolor{alerted text}{fg=eth7}
-\setbeamerfont{alerted text}{series=\bfseries}
-\setbeamercolor{block title alerted}{use=alerted text,fg=white,bg=alerted text.fg}
-\setbeamerfont{block title alerted}{series=\normalfont}
-\setbeamercolor{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg!20!bg}
+\mode<all>
 %    \end{macrocode}
 %
-% Redefine the example box.
+% \iffalse
+%</beamerinnerthemeiis>
+% \fi
+%
+%
+% \subsection{Color Settings (\file{beamercolorthemeiis.sty})}
+%
+% \iffalse
+%<*beamercolorthemeiis>
+% \fi
+%
+% Ensure that the following changes are valid for all
+% \emph{presentation} modes of \latexcls{beamer} (i.e., not for the
+% \emph{article} mode).
+%    \begin{macrocode}
+\mode<presentation>
+%    \end{macrocode}
+%
+% Declare the ETH corporate design
+% colors\footnote{\url{https://www.ethz.ch/services/en/service/communication/corporate-design/colour.html}} based on RGB values.
+%    \begin{macrocode}
+\definecolor{eth1}{RGB}{31,64,122}
+\definecolor{eth2}{RGB}{72,90,44}
+\definecolor{eth3}{RGB}{18,105,176}
+\definecolor{eth4}{RGB}{114,121,28}
+\definecolor{eth5}{RGB}{145,5,105}
+\definecolor{eth6}{RGB}{111,111,100}
+\definecolor{eth7}{RGB}{168,50,45}
+\definecolor{eth8}{RGB}{0,122,150}
+\definecolor{eth9}{RGB}{149,96,19}
+\definecolor{eth10}{RGB}{140,182,60}
+%    \end{macrocode}
+%
+% Declare the main color of the theme.
+%    \begin{macrocode}
+\setbeamercolor*{structure}{fg=eth1}
+%    \end{macrocode}
+%
+% Derive the color palettes for the outer theme from the main color.
+%    \begin{macrocode}
+\setbeamercolor{palette primary}{%
+  use=structure,fg=white,bg=structure.fg!40!white}
+\setbeamercolor{palette secondary}{%
+  use=structure,fg=white,bg=structure.fg!60!white}
+%    \end{macrocode}
+%
+% Note that the following color is used for the headers and footers.
+%    \begin{macrocode}
+\setbeamercolor{palette tertiary}{%
+  use=structure,fg=white,bg=structure.fg!90!white}
+\setbeamercolor{palette quaternary}{%
+  fg=white,bg=black}
+%    \end{macrocode}
+%
+% Specify the colors of the standard block.
+%    \begin{macrocode}
+\setbeamercolor{block title}{%
+  parent=normal text,fg=white,bg=eth1}
+\setbeamercolor{block body}{%
+  parent=normal text,use=block title,bg=block title.bg!20!bg}
+%    \end{macrocode}
+%
+% Specify the colors of the example block.
 %    \begin{macrocode}
 \setbeamercolor{example text}{fg=eth4}
-\setbeamercolor{block title example}{use=example text,fg=white,bg=example text.fg}
-\setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!20!bg}
+\setbeamercolor{block title example}{%
+  use=example text,fg=white,bg=example text.fg}
+\setbeamercolor{block body example}{%
+  parent=normal text,use=block title example,%
+  bg=block title example.bg!20!bg}
 %    \end{macrocode}
 %
-% Definiation of the frame title.
+% Specify the colors of the alert box.
 %    \begin{macrocode}
-\setbeamertemplate{frametitle}
-{       \vskip3pt
-        \insertframetitle
-}
+\setbeamercolor{alerted text}{fg=eth7}
+\setbeamercolor{alerted block}{fg=eth7}
+\setbeamercolor{block title alerted}{%
+  use=alerted block,fg=white,bg=alerted block.fg}
+\setbeamercolor{block body alerted}{%
+  parent=normal text,use=block title alerted,%
+  bg=block title alerted.bg!20!bg}
 %    \end{macrocode}
 %
-% Definition of the header.
+% Ensure that all subsequent commands will again be valid for all
+% modes of the \latexcls{beamer} class.
 %    \begin{macrocode}
-\setbeamertemplate{headline}{
-\begin{beamercolorbox}[ht=12pt]{headfootcolor}
-     \insertsectionnavigationhorizontal{\paperwidth}{\hskip0.2cm}{\hskip0pt plus1filll \insertframenumber /\inserttotalframenumber\hskip\IISmargin}%
-     \vskip2pt%
-\end{beamercolorbox}
-}
+\mode<all>
 %    \end{macrocode}
 %
-% Definition of the footer.
+% \iffalse
+%</beamercolorthemeiis>
+% \fi
+%
+%
+% \subsection{Font Settings (\file{beamercolorthemeiis.sty})}
+%
+% \iffalse
+%<*beamerfontthemeiis>
+% \fi
+%
+% Ensure that the following changes are valid for all
+% \emph{presentation} modes of \latexcls{beamer} (i.e., not for the
+% \emph{article} mode).
 %    \begin{macrocode}
-\setbeamertemplate{footline}{
-\begin{beamercolorbox}[ht=13pt]{headfootcolor}
-  \vskip2pt
-  \begin{columns}[b]
-    \begin{column}[l]{0.15\paperwidth}
-            \mbox{\hskip\IISmargin\hskip-1pt\includegraphics[width=1.7cm]{eth_logo_neg}}
-    \end{column}
-    \begin{column}[r]{0.80\paperwidth}
-      \hfill
-      \mbox{\textcolor{white}{\scriptsize\insertshortinstitute}\hskip\IISmargin\hskip-1pt}
-    \end{column}
-  \end{columns}
-  \vskip1pt
-  \end{beamercolorbox}
-}
+\mode<presentation>
 %    \end{macrocode}
 %
-% Definition of the title page.
+% Set the font for the frame titles.
 %    \begin{macrocode}
-\setbeamercolor{title}{fg=eth1}
-\setbeamercolor{subtitle}{fg=eth1}
-\setbeamertemplate{title page}
-{
-  \pgfputat{\pgfxy(-0.55,-5.0)}{\pgfbox[left,top]{\pgfimage[width=0.5\paperwidth]{./wafer}}}
-  %\vfill
-  \begin{flushright}
-    {\usebeamerfont{title}\usebeamercolor[fg]{title}\textbf{\inserttitle}}
-    \vskip-0.2cm
-    \textcolor{eth1}{\rule{0.8\paperwidth}{2pt}}\\
-    %\vskip-0.2cm
-    {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\textbf{\insertsubtitle}}\\
-    \usebeamerfont{date}{\footnotesize\insertdate}\\
-    \vfill
-    \usebeamerfont{author}{\small\insertauthor}
-    \vfill
-    \includegraphics[width=2cm]{./eth_logo}\\
-    \usebeamerfont{institute}{\insertinstitute}
-  \end{flushright}
-  \vspace{-1.5cm}
-}
+\setbeamerfont{frametitle}{series=\bfseries}
 %    \end{macrocode}
+%
+% Ensure that all subsequent commands will again be valid for all
+% modes of the \latexcls{beamer} class.
+%    \begin{macrocode}
+\mode<all>
+%    \end{macrocode}
+%
+% \iffalse
+%</beamerfontthemeiis>
+% \fi
 %
 % \Finale
 %

@@ -1,87 +1,93 @@
-## The LaTeX source file.
-SRC = iisbeamer
+SRC      = beamerthemeiis
+TEXVER   = 2011
+VIEWPDF  = okular
+EX       = example
+FEATURES = index history
 
 ## Determine the host the Makefile is running on.
 HOST = $(shell hostname)
 
 ## Determine the path to the pdflatex binary depending on the current host.
 ifeq ($(HOST),muem_mobile)
-  ## Path to the pdflatex binary for my cygwin installation on my laptop.
-	PDFLATEX_BIN = "/cygdrive/c/Program Files/MiKTeX 2.9/miktex/bin/x64/pdflatex.exe"
+  ## Path to the latex/pdflatex binary for my cygwin installation on my laptop.
+  LATEX     = "/cygdrive/c/Program Files/MiKTeX 2.9/miktex/bin/x64/latex.exe"
+	PDFLATEX  = "/cygdrive/c/Program Files/MiKTeX 2.9/miktex/bin/x64/pdflatex.exe"
+  MAKEINDEX = "/cygdrive/c/Program Files/MiKTeX 2.9/miktex/bin/x64/makeindex.exe"
 else
   ## Otherwise we assume that we are running this Makefile on my work PC.
-	PDFLATEX_BIN = pdflatex
+  LATEX     = latex-$(TEXVER)
+  PDFLATEX  = pdflatex-$(TEXVER)
+  MAKEINDEX = makeindex-$(TEXVER)
 endif
 
-## Determine the path to the latex binary depending on the current host.
-ifeq ($(HOST),muem_mobile)
-  ## Path to the latex binary for my cygwin installation on my laptop.
-	LATEX_BIN = "/cygdrive/c/Program Files/MiKTeX 2.9/miktex/bin/x64/latex.exe"
-else
-  ## Otherwise we assume that we are running this Makefile on my work PC.
-	LATEX_BIN = latex
-endif
+## Determine the host the Makefile is running on.
+HOST = $(shell hostname)
 
-## Determine the path to the BibTeX binary depending on the current host.
-ifeq ($(HOST),muem_mobile)
-  ## Path to the BibTeX binary for my cygwin installation on my laptop. 
-	BIBTEX_BIN = "/cygdrive/c/Program Files/MiKTeX 2.9/miktex/bin/x64/bibtex.exe"
-else
-  ## Otherwise we assume that we are running this Makefile on my work PC.
-	BIBTEX_BIN = bibtex
-endif
+.PHONY: help clean
 
-## Determine the path to the Biber binary depending on the current host.
-ifeq ($(HOST),muem_mobile)
-  ## Path to the Biber binary for my cygwin installation on my laptop. 
-	BIBER_BIN = "/cygdrive/c/Program\ Files/MiKTeX\ 2.9/miktex/bin/biber.exe"
-else
-  ## Otherwise we assume that we are running this Makefile on my work PC.
-	BIBER_BIN = "/usr/pack/texlive-2011-kgf/bin/x86_64-linux/biber"
-endif
+all: sty doc $(FEATURES) example
+	@$(PDFLATEX) $(SRC).dtx
 
-## Determine the path to the makeindex binary depending on the current host.
-ifeq ($(HOST),muem_mobile)
-  ## Path to the makeindex binary for my cygwin installation on my laptop.
-	MAKEINDEX_BIN = "/cygdrive/c/Program Files/MiKTeX 2.9/miktex/bin/x64/makeindex.exe"
-else
-  ## Otherwise we assume that we are running this Makefile on my work PC.
-	MAKEINDEX_BIN = makeindex
-endif
+$(SRC).sty: $(SRC).dtx $(SRC).ins
+	@$(LATEX) $(SRC).ins
 
+$(SRC).pdf: $(SRC).dtx
+	@$(PDFLATEX) $(SRC).dtx
 
-all: argl
+sty: $(SRC).sty
 
-argl:
-	$(PDFLATEX_BIN) example.tex
+doc: $(SRC).pdf
 
-build:
-	@$(call echo_info, "Building the LaTeX class.")
-	$(LATEX_BIN) $(SRC).ins
+example: $(EX).pdf
 
-doc:
-	@$(call echo_info, "Building the documentation")
-	$(PDFLATEX_BIN) $(SRC).dtx
+## A pattern rule to create a PDF from a TEX source (only used for the example).
+%.pdf: %.tex
+	@$(PDFLATEX) $(EX) $<
+	@$(PDFLATEX) $(EX) $<
 
-index:
-	@$(call echo_info, "Building the index")
-	$(MAKEINDEX_BIN) -s gglo.ist -o $(SRC).gls $(SRC).glo
-	$(MAKEINDEX_BIN) -s gind.ist -o $(SRC).ind $(SRC).idx
+## Targets to build the history.
+history: $(SRC).gls $(SRC).ilg
 
-sample:
-	$(PDFLATEX_BIN) iis_sample.tex
+$(SRC).glo $(SRC).aux: $(SRC).dtx
+	@$(PDFLATEX) $(SRC).dtx
+
+$(SRC).gls: $(SRC).dtx $(SRC).glo
+	@$(MAKEINDEX) -s gglo.ist -o $(SRC).gls $(SRC).glo
+
+## Targets to build the index.
+index: $(SRC).ind $(SRC).ilg
+
+$(SRC).idx $(SRC).nlo: $(SRC).dtx
+	@$(PDFLATEX) $(SRC).dtx
+
+$(SRC).ind $(SRC).ilg: $(SRC).dtx $(SRC).idx
+	@$(MAKEINDEX) -s gind.ist -o $(SRC).ind $(SRC).idx
+
+view:
+	$(VIEWPDF) $(SRC).pdf &
 
 clean:
-	@$(call echo_info, "Cleaining the directory")
-	@rm -rf *.acr *.alg *.bbl *.blg *.glg *.gls *.aux *.glo *.ist
-	@rm -rf *.lof *.log *.lot *.toc *.acn *.out *.tex~ *.tex.backup
-	@rm -rf *.fdb_latexmk *.fls Makefile~ pso.conv-* auto *.hst *.ver
-	@rm -rf *.bcf *.run.xml *.idx *.nav *.snm *.ilg *.ind
-	@rm -rf *~
+	@rm -f *.log *~ *.aux *.glo *.gls *.idx *.ilg *.ind
+	@rm -f *.out *.tdo *.toc *.sty *.nav *.snm *.vrb $(SRC).pdf
 
-
-## Some helper functions used for outputting text. Throughout the following
-## functions, we make use of 'tput'.
-define echo_info
-        @echo "**[MAKE]**$1"
-endef
+help:
+	@echo
+	@echo "USAGE    : make [options] <target(s)>"
+	@echo
+	@echo "TARGETS  : help               - Show the help (this text)."
+	@echo                                                        
+	@echo "           (default)          - Call 'all' target"
+	@echo "           all                - Create theme files, documentation, and example"
+	@echo "           sty                - Create theme files"
+	@echo "           doc                - Create theme documentation"
+	@echo "           history            - Create theme history"
+	@echo "           index              - Create theme index"
+	@echo "           example            - Create example file"
+	@echo "           clean              - Clean directory" 
+	@echo
+	@echo "OPTIONS  : -B                 - Always build (regardless of whether the dependencies"
+	@echo "                                are outdated or not)."
+	@echo
+	@echo "EXAMPLEs : make"
+	@echo "           make example"
+	@echo
