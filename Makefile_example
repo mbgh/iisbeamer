@@ -1,0 +1,38 @@
+## SETTINGS
+SRC    = example
+VER    = 2011
+VIEWER = okular
+
+## TARGETS
+all: pdf
+
+help:
+	@echo
+	@echo "Usage    : make [options] <target>"
+	@echo
+	@echo "Targets  : help      - Shows the help (this text)."
+	@echo
+	@echo "           all       - (Re)creates the PDF output file."
+	@echo "           pdf       - (Re)creates the PDF output file."	
+	@echo "           view      - Views the PDF output file."	
+	@echo "           clean     - Cleans up the directory structure."
+	@echo
+	@echo "Options  : -B        - Always build (regardless of whether the dependencies"
+	@echo "                       are outdated or not)."
+	@echo
+	@echo "Examples : make pdf"
+	@echo
+
+pdf: $(SRC).pdf
+
+%.pdf: %.tex
+	pdflatex-$(VER) $(SRC).tex
+
+view:
+	$(VIEWER) $(SRC).pdf &
+
+clean:
+	@echo "***** Cleaning the LaTeX directory structure."
+	@rm -rf *.acr *.alg *.bbl *.blg *.glg *.gls *.aux *.glo *.ist *.nav *.snm
+	@rm -rf *.vrb *.lof *.log *.lot *.toc *.acn *.out *.tex~ *.tex.backup
+	@rm -rf *.fdb_latexmk *.fls Makefile~ pso.conv-* auto *.hst *.ver 

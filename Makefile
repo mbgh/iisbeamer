@@ -4,6 +4,10 @@ VIEWPDF  = okular
 EX       = example
 FEATURES = index history
 
+## Directory to be used when creating an archive containing all the files
+## required for the usage of the beamer theme.
+OUTP  = iisbeamer
+
 ## Determine the host the Makefile is running on.
 HOST = $(shell hostname)
 
@@ -66,9 +70,30 @@ $(SRC).ind $(SRC).ilg: $(SRC).dtx $(SRC).idx
 view:
 	$(VIEWPDF) $(SRC).pdf &
 
+tar:
+	@make -B
+	@mkdir $(OUTP)
+	@cp $(SRC).sty $(OUTP)/$(SRC).sty
+	@cp beamerouterthemeiis.sty $(OUTP)/beamerouterthemeiis.sty
+	@cp beamerinnerthemeiis.sty $(OUTP)/beamerinnerthemeiis.sty
+	@cp beamercolorthemeiis.sty $(OUTP)/beamercolorthemeiis.sty
+	@cp beamerfontthemeiis.sty $(OUTP)/beamerfontthemeiis.sty
+	@cp eth_logo.pdf $(OUTP)/eth_logo.pdf
+	@cp eth_logo_neg.pdf $(OUTP)/eth_logo_neg.pdf
+	@cp wafer.jpg $(OUTP)/wafer.png
+	@cp example.tex $(OUTP)/example.tex
+	@cp example.pdf $(OUTP)/example.pdf
+	@cp wafer.jpg $(OUTP)/wafer.jpg
+	@cp wafer.png $(OUTP)/wafer.png
+	@cp Makefile_example $(OUTP)/Makefile
+	@tar -czf $(OUTP).tar.gz $(OUTP)/
+	@rm -rf $(OUTP)
+	@echo "### Archive containing IIS beamer template created: $(OUTP).tar.gz"
+
 clean:
 	@rm -f *.log *~ *.aux *.glo *.gls *.idx *.ilg *.ind
 	@rm -f *.out *.tdo *.toc *.sty *.nav *.snm *.vrb $(SRC).pdf
+	@rm -rf $(OUTP) $(OUTP).tar.gz
 
 help:
 	@echo
@@ -83,6 +108,7 @@ help:
 	@echo "           history            - Create theme history"
 	@echo "           index              - Create theme index"
 	@echo "           example            - Create example file"
+	@echo "           tar                - Create an archive containing all files required for the theme"
 	@echo "           clean              - Clean directory" 
 	@echo
 	@echo "OPTIONS  : -B                 - Always build (regardless of whether the dependencies"

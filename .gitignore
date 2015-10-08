@@ -129,3 +129,5 @@ sympy-plots-for-*.tex/
 install_global.sh
 install_local.sh
 example.pdf
+wafer_large.jpg
+wafer_large.png
