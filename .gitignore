@@ -131,8 +131,5 @@ install_local.sh
 example.pdf
 wafer_large.jpg
 wafer_large.png
-teaser.ai
-teaser_01.jpg
-teaser_02.jpg
-teaser_03.jpg
-teaser_04.jpg
+
+teaser/*
