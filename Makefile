@@ -15,7 +15,7 @@ HOST = $(shell hostname)
 ifeq ($(HOST),muem_mobile)
   ## Path to the latex/pdflatex binary for my cygwin installation on my laptop.
   LATEX     = "/cygdrive/c/Program Files/MiKTeX 2.9/miktex/bin/x64/latex.exe"
-	PDFLATEX  = "/cygdrive/c/Program Files/MiKTeX 2.9/miktex/bin/x64/pdflatex.exe"
+  PDFLATEX  = "/cygdrive/c/Program Files/MiKTeX 2.9/miktex/bin/x64/pdflatex.exe"
   MAKEINDEX = "/cygdrive/c/Program Files/MiKTeX 2.9/miktex/bin/x64/makeindex.exe"
 else
   ## Otherwise we assume that we are running this Makefile on my work PC.
@@ -23,9 +23,6 @@ else
   PDFLATEX  = pdflatex-$(TEXVER)
   MAKEINDEX = makeindex-$(TEXVER)
 endif
-
-## Determine the host the Makefile is running on.
-HOST = $(shell hostname)
 
 .PHONY: help clean
 
@@ -100,7 +97,7 @@ help:
 	@echo "USAGE    : make [options] <target(s)>"
 	@echo
 	@echo "TARGETS  : help               - Show the help (this text)."
-	@echo                                                        
+	@echo
 	@echo "           (default)          - Call 'all' target"
 	@echo "           all                - Create theme files, documentation, and example"
 	@echo "           sty                - Create theme files"
@@ -109,7 +106,7 @@ help:
 	@echo "           index              - Create theme index"
 	@echo "           example            - Create example file"
 	@echo "           tar                - Create an archive containing all files required for the theme"
-	@echo "           clean              - Clean directory" 
+	@echo "           clean              - Clean directory"
 	@echo
 	@echo "OPTIONS  : -B                 - Always build (regardless of whether the dependencies"
 	@echo "                                are outdated or not)."
